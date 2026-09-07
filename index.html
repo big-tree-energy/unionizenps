@@ -35,8 +35,7 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
         <script src="js/leaflet-search.js"></script>
-        <script src="data/NPSRegionalBoundaries_1.js"></script>
-        <script src="data/NPSBoundaries_2.js"></script>
+        <script src="data/NPSBoundaries_1.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -45,7 +44,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[14.780927155217716,-178.51091153280186],[68.95546172837487,-43.79730573802815]]);
+        }).fitBounds([[35.954455061130965,-126.03054660866582],[39.96886437959074,-117.61094624649246]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -140,158 +139,7 @@
         });
         layer_OSMStandard_0;
         map.addLayer(layer_OSMStandard_0);
-        function pop_NPSRegionalBoundaries_1(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <th scope="row">Region</th>\
-                        <td>' + (feature.properties['Region'] !== null ? autolinker.link(String(feature.properties['Region']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Bus Code</th>\
-                        <td>' + (feature.properties['Bus_Code'] !== null ? autolinker.link(String(feature.properties['Bus_Code']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Union Acronym</th>\
-                        <td>' + (feature.properties['Union_Acro'] !== null ? autolinker.link(String(feature.properties['Union_Acro']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Union Local Number</th>\
-                        <td>' + (feature.properties['Local_Num'] !== null ? autolinker.link(String(feature.properties['Local_Num']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Union Email</th>\
-                        <td>' + (feature.properties['Email'] !== null ? autolinker.link(String(feature.properties['Email']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_NPSRegionalBoundaries_1_0(feature) {
-            switch(String(feature.properties['Region'])) {
-                case 'Alaska':
-                    return {
-                pane: 'pane_NPSRegionalBoundaries_1',
-                opacity: 1,
-                color: 'rgba(237,81,81,1.0)',
-                dashArray: '',
-                lineCap: 'round',
-                lineJoin: 'round',
-                weight: 4.0,
-                fillOpacity: 0,
-                interactive: true,
-            }
-                    break;
-                case 'Intermountain':
-                    return {
-                pane: 'pane_NPSRegionalBoundaries_1',
-                opacity: 1,
-                color: 'rgba(20,158,206,1.0)',
-                dashArray: '',
-                lineCap: 'round',
-                lineJoin: 'round',
-                weight: 4.0,
-                fillOpacity: 0,
-                interactive: true,
-            }
-                    break;
-                case 'Midwest':
-                    return {
-                pane: 'pane_NPSRegionalBoundaries_1',
-                opacity: 1,
-                color: 'rgba(167,198,54,1.0)',
-                dashArray: '',
-                lineCap: 'round',
-                lineJoin: 'round',
-                weight: 4.0,
-                fillOpacity: 0,
-                interactive: true,
-            }
-                    break;
-                case 'National Capital':
-                    return {
-                pane: 'pane_NPSRegionalBoundaries_1',
-                opacity: 1,
-                color: 'rgba(158,85,156,1.0)',
-                dashArray: '',
-                lineCap: 'round',
-                lineJoin: 'round',
-                weight: 4.0,
-                fillOpacity: 0,
-                interactive: true,
-            }
-                    break;
-                case 'Northeast':
-                    return {
-                pane: 'pane_NPSRegionalBoundaries_1',
-                opacity: 1,
-                color: 'rgba(252,146,31,1.0)',
-                dashArray: '',
-                lineCap: 'round',
-                lineJoin: 'round',
-                weight: 4.0,
-                fillOpacity: 0,
-                interactive: true,
-            }
-                    break;
-                case 'Pacific West':
-                    return {
-                pane: 'pane_NPSRegionalBoundaries_1',
-                opacity: 1,
-                color: 'rgba(255,222,62,1.0)',
-                dashArray: '',
-                lineCap: 'round',
-                lineJoin: 'round',
-                weight: 4.0,
-                fillOpacity: 0,
-                interactive: true,
-            }
-                    break;
-                case 'Southeast':
-                    return {
-                pane: 'pane_NPSRegionalBoundaries_1',
-                opacity: 1,
-                color: 'rgba(247,137,216,1.0)',
-                dashArray: '',
-                lineCap: 'round',
-                lineJoin: 'round',
-                weight: 4.0,
-                fillOpacity: 0,
-                interactive: true,
-            }
-                    break;
-            }
-        }
-        map.createPane('pane_NPSRegionalBoundaries_1');
-        map.getPane('pane_NPSRegionalBoundaries_1').style.zIndex = 401;
-        map.getPane('pane_NPSRegionalBoundaries_1').style['mix-blend-mode'] = 'normal';
-        var layer_NPSRegionalBoundaries_1 = new L.geoJson(json_NPSRegionalBoundaries_1, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_NPSRegionalBoundaries_1',
-            layerName: 'layer_NPSRegionalBoundaries_1',
-            pane: 'pane_NPSRegionalBoundaries_1',
-            onEachFeature: pop_NPSRegionalBoundaries_1,
-            style: style_NPSRegionalBoundaries_1_0,
-        });
-        bounds_group.addLayer(layer_NPSRegionalBoundaries_1);
-        map.addLayer(layer_NPSRegionalBoundaries_1);
-        function pop_NPSBoundaries_2(feature, layer) {
+        function pop_NPSBoundaries_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -337,11 +185,11 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_NPSBoundaries_2_0(feature) {
+        function style_NPSBoundaries_1_0(feature) {
             switch(String(feature.properties['Union_Acro'])) {
                 case 'AFGE':
                     return {
-                pane: 'pane_NPSBoundaries_2',
+                pane: 'pane_NPSBoundaries_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -356,7 +204,7 @@
                     break;
                 case 'IBEW':
                     return {
-                pane: 'pane_NPSBoundaries_2',
+                pane: 'pane_NPSBoundaries_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -371,7 +219,7 @@
                     break;
                 case 'IBT':
                     return {
-                pane: 'pane_NPSBoundaries_2',
+                pane: 'pane_NPSBoundaries_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -386,7 +234,7 @@
                     break;
                 case 'LIUNA':
                     return {
-                pane: 'pane_NPSBoundaries_2',
+                pane: 'pane_NPSBoundaries_1',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -401,7 +249,7 @@
                     break;
                 case 'NAGE':
                     return {
-                pane: 'pane_NPSBoundaries_2',
+                pane: 'pane_NPSBoundaries_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -416,7 +264,7 @@
                     break;
                 case 'NFFE':
                     return {
-                pane: 'pane_NPSBoundaries_2',
+                pane: 'pane_NPSBoundaries_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -431,7 +279,7 @@
                     break;
                 case 'NTEU':
                     return {
-                pane: 'pane_NPSBoundaries_2',
+                pane: 'pane_NPSBoundaries_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -446,7 +294,7 @@
                     break;
                 case 'SEIU':
                     return {
-                pane: 'pane_NPSBoundaries_2',
+                pane: 'pane_NPSBoundaries_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -461,7 +309,7 @@
                     break;
                 default:
                     return {
-                pane: 'pane_NPSBoundaries_2',
+                pane: 'pane_NPSBoundaries_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -476,23 +324,22 @@
                     break;
             }
         }
-        map.createPane('pane_NPSBoundaries_2');
-        map.getPane('pane_NPSBoundaries_2').style.zIndex = 402;
-        map.getPane('pane_NPSBoundaries_2').style['mix-blend-mode'] = 'normal';
-        var layer_NPSBoundaries_2 = new L.geoJson(json_NPSBoundaries_2, {
+        map.createPane('pane_NPSBoundaries_1');
+        map.getPane('pane_NPSBoundaries_1').style.zIndex = 401;
+        map.getPane('pane_NPSBoundaries_1').style['mix-blend-mode'] = 'normal';
+        var layer_NPSBoundaries_1 = new L.geoJson(json_NPSBoundaries_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_NPSBoundaries_2',
-            layerName: 'layer_NPSBoundaries_2',
-            pane: 'pane_NPSBoundaries_2',
-            onEachFeature: pop_NPSBoundaries_2,
-            style: style_NPSBoundaries_2_0,
+            dataVar: 'json_NPSBoundaries_1',
+            layerName: 'layer_NPSBoundaries_1',
+            pane: 'pane_NPSBoundaries_1',
+            onEachFeature: pop_NPSBoundaries_1,
+            style: style_NPSBoundaries_1_0,
         });
-        bounds_group.addLayer(layer_NPSBoundaries_2);
-        map.addLayer(layer_NPSBoundaries_2);
+        bounds_group.addLayer(layer_NPSBoundaries_1);
+        map.addLayer(layer_NPSBoundaries_1);
         var overlaysTree = [
-            {label: 'NPS Boundaries<br /><table><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_2_AFGE0.png" /></td><td>AFGE</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_2_IBEW1.png" /></td><td>IBEW</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_2_IBT2.png" /></td><td>IBT</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_2_LIUNA3.png" /></td><td>LIUNA</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_2_NAGE4.png" /></td><td>NAGE</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_2_NFFE5.png" /></td><td>NFFE</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_2_NTEU6.png" /></td><td>NTEU</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_2_SEIU7.png" /></td><td>SEIU</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_2_NotUnionized8.png" /></td><td>Not Unionized</td></tr></table>', layer: layer_NPSBoundaries_2},
-            {label: 'NPS Regional Boundaries<br /><table><tr><td style="text-align: center;"><img src="legend/NPSRegionalBoundaries_1_Alaska0.png" /></td><td>Alaska</td></tr><tr><td style="text-align: center;"><img src="legend/NPSRegionalBoundaries_1_Intermountain1.png" /></td><td>Intermountain</td></tr><tr><td style="text-align: center;"><img src="legend/NPSRegionalBoundaries_1_Midwest2.png" /></td><td>Midwest</td></tr><tr><td style="text-align: center;"><img src="legend/NPSRegionalBoundaries_1_NationalCapital3.png" /></td><td>National Capital</td></tr><tr><td style="text-align: center;"><img src="legend/NPSRegionalBoundaries_1_Northeast4.png" /></td><td>Northeast</td></tr><tr><td style="text-align: center;"><img src="legend/NPSRegionalBoundaries_1_PacificWest5.png" /></td><td>Pacific West</td></tr><tr><td style="text-align: center;"><img src="legend/NPSRegionalBoundaries_1_Southeast6.png" /></td><td>Southeast</td></tr></table>', layer: layer_NPSRegionalBoundaries_1},
+            {label: 'NPS Boundaries<br /><table><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_1_AFGE0.png" /></td><td>AFGE</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_1_IBEW1.png" /></td><td>IBEW</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_1_IBT2.png" /></td><td>IBT</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_1_LIUNA3.png" /></td><td>LIUNA</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_1_NAGE4.png" /></td><td>NAGE</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_1_NFFE5.png" /></td><td>NFFE</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_1_NTEU6.png" /></td><td>NTEU</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_1_SEIU7.png" /></td><td>SEIU</td></tr><tr><td style="text-align: center;"><img src="legend/NPSBoundaries_1_NotUnionized8.png" /></td><td>Not Unionized</td></tr></table>', layer: layer_NPSBoundaries_1},
             {label: "OSM Standard", layer: layer_OSMStandard_0, radioGroup: 'bm' },]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
@@ -506,13 +353,13 @@
         lay.addTo(map);
         map.on("zoomend", function(){
 
-                if (map.hasLayer(layer_NPSBoundaries_2)) {
+                if (map.hasLayer(layer_NPSBoundaries_1)) {
                     if (map.getZoom() <= 4 && map.getZoom() >= 19) {
-                        layer_NPSBoundaries_2.eachLayer(function (layer) {
+                        layer_NPSBoundaries_1.eachLayer(function (layer) {
                             layer.openTooltip();
                         });
                     } else {
-                        layer_NPSBoundaries_2.eachLayer(function (layer) {
+                        layer_NPSBoundaries_1.eachLayer(function (layer) {
                             layer.closeTooltip();
                         });
                     }
@@ -520,31 +367,31 @@
         });
         setBounds();
         var i = 0;
-        layer_NPSBoundaries_2.eachLayer(function(layer) {
+        layer_NPSBoundaries_1.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['UNIT_CODE'] !== null?String('<div style="color: #323232; font-size: 8pt; font-weight: bold; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['UNIT_CODE']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_NPSBoundaries_2'});
+            layer.bindTooltip((layer.feature.properties['UNIT_CODE'] !== null?String('<div style="color: #323232; font-size: 8pt; font-weight: bold; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['UNIT_CODE']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_NPSBoundaries_1'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-                if (map.hasLayer(layer_NPSBoundaries_2)) {
+                if (map.hasLayer(layer_NPSBoundaries_1)) {
                     if (map.getZoom() <= 4 && map.getZoom() >= 19) {
-                        layer_NPSBoundaries_2.eachLayer(function (layer) {
+                        layer_NPSBoundaries_1.eachLayer(function (layer) {
                             layer.openTooltip();
                         });
                     } else {
-                        layer_NPSBoundaries_2.eachLayer(function (layer) {
+                        layer_NPSBoundaries_1.eachLayer(function (layer) {
                             layer.closeTooltip();
                         });
                     }
                 }
         map.addControl(new L.Control.Search({
-            layer: layer_NPSBoundaries_2,
+            layer: layer_NPSBoundaries_1,
             initial: false,
             hideMarkerOnCollapse: true,
             propertyName: 'UNIT_CODE'}));
@@ -553,15 +400,15 @@
         } else {
             document.getElementsByClassName('search-button')[1].className += ' fa fa-binoculars';
         }
-        resetLabels([layer_NPSBoundaries_2]);
+        resetLabels([layer_NPSBoundaries_1]);
         map.on("zoomend", function(){
-            resetLabels([layer_NPSBoundaries_2]);
+            resetLabels([layer_NPSBoundaries_1]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_NPSBoundaries_2]);
+            resetLabels([layer_NPSBoundaries_1]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_NPSBoundaries_2]);
+            resetLabels([layer_NPSBoundaries_1]);
         });
         </script>
     </body>
