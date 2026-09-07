@@ -45,7 +45,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[0.035006374436834554,40.00759386688196],[83.35005667116778,130.5803822773345]]);
+        }).fitBounds([[14.780927155217716,-178.51091153280186],[68.95546172837487,-43.79730573802815]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -310,7 +310,8 @@
                         <td>' + (feature.properties['UNIT_CODE'] !== null ? autolinker.link(String(feature.properties['UNIT_CODE']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>Unit Name</strong><br />' + (feature.properties['UNIT_NAME'] !== null ? autolinker.link(String(feature.properties['UNIT_NAME']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">Unit Name</th>\
+                        <td>' + (feature.properties['UNIT_NAME'] !== null ? autolinker.link(String(feature.properties['UNIT_NAME']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Bus Code</th>\
